@@ -1,14 +1,13 @@
 version: 1.0
 name: custom-runtime-connector-apb
-description: Custom Runtime Connector
-bindable: True
+description: Custom Runtime Connector - Ansible Tests
 async: required
 tags:
   - mobile-service
   - mobile-client-enabled
 metadata:
   console.openshift.io/iconClass: fa fa-plug
-  displayName: Custom Runtime Connector
+  displayName: Custom Runtime Connector - Ansible Tests
   dependencies: []
   documentationUrl: "http://www.aerogear.org/custom-runtime-connector/documentation.html"
   providerDisplayName: "Red Hat, Inc."
