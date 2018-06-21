@@ -2,6 +2,7 @@ version: 1.0
 name: custom-runtime-connector-apb
 description: Custom Runtime Connector Ansible Tests
 async: required
+bindable: true
 tags:
   - mobile-service
   - mobile-client-enabled

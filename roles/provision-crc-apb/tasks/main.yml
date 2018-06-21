@@ -18,5 +18,7 @@
       some-key : "some_val"
       another-key: "some_value"
 
-- fail:
-    msg: "This APB never stood a chance. God rest its soul."
+- asb_encode_binding:
+    fields:
+      SERVICE_NAME: "test"
+      SERVICE_URI: "test"
