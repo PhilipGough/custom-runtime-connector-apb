@@ -1,47 +1,23 @@
 ---
-- name: Retrieve {{ SERVICE_NAME }} configuration
-  shell: >
-    oc get configmaps/{{ crc_svc_config_alias }}
-    -n {{ namespace }}
-    -o jsonpath='{.data.config}'
-  register: svc_json_str_config
 
-- name: Validate CRC JSON config
-  set_fact: svc_json_config={{ svc_json_str_config.stdout | from_json }}
-  register: crc_json_config_valid
-  ignore_errors: True
+- name: Get all state
+  set_fact:
+    all_state: "{{lookup('asb_state', get_all=True) }}"
 
-- block:
-  - asb_last_operation:
-      description: "config was not valid json. Could not bind"
+- debug: msg="the value of foo.txt is {{all_state.some-key}}"
 
-  - lineinfile:
-      line: 'config was not valid json. Could not bind'
-      path: '{{ crc_term_msg_filepath }}'
-      unsafe_writes: true
+- name: test the new asb_state lookup plugin
+  set_fact:
+    some_test_var: "{{lookup('asb_state', 'some-key') }}"
 
-  - fail:
-      msg: "config was not valid json. Could not bind"
-  when: crc_json_config_valid.failed
+- debug: msg="the value of foo.txt is {{some_test_var}}"
 
-- name: Creating CRC {{ CLIENT_ID }} secret
-  k8s_v1_secret:
-    name: '{{ crc_client_config_alias }}'
-    namespace: '{{ namespace }}'
-    annotations:
-      configType: '{{ crc_svc_config_type }}'
-    labels:
-      name: '{{ SERVICE_NAME }}'
-      mobile: '{{ crc_svc_label_mobile }}'
-      serviceName: '{{ crc_svc_name }}'
-      serviceInstanceID: '{{ _apb_service_instance_id }}'
-      clientId: '{{ CLIENT_ID }}'
-      mobile-client: '{{ crc_svc_label_mobile }}'
-    string_data:
-      type: '{{ crc_svc_type }}'
-      name: '{{ SERVICE_NAME }}'
-      uri: '{{ SERVICE_URI }}'
-      config: '{{ svc_json_config | to_nice_json }}'
+
+- name: Testing changed status should report ok
+  asb_set_state:
+    fields:
+      some-other-key : "some_val"
+
 
 - asb_encode_binding:
     fields:

@@ -5,6 +5,18 @@
     namespace: '{{ namespace }}'
     state: absent
 
+- name: Get all state
+  set_fact:
+    all_state: "{{lookup('asb_state', get_all=True) }}"
+
+- debug: msg="the value of foo.txt is {{all_state.some-key}}"
+
+- name: test the new asb_state lookup plugin
+  set_fact:
+    some_test_dict: "{{lookup('asb_state', 'some-key','some-other-key') }}"
+
+- debug: msg="the value of foo.txt is {{some_test_dict}}"
+
 - name: Delete CRC configmap
   k8s_v1_config_map:
     name: '{{ crc_svc_config_alias }}'

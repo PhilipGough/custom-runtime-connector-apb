@@ -1,6 +1,12 @@
 ---
-- name: Delete CRC {{ _apb_bind_creds.CLIENT_ID }} configmap
-  k8s_v1_secret:
-    name: '{{ crc_client_config_alias }}'
-    namespace: '{{ namespace }}'
-    state: absent
+- name: Get all state
+  set_fact:
+    all_state: "{{lookup('asb_state', get_all=True) }}"
+
+- debug: msg="the value of foo.txt is {{all_state.some-key}}"
+
+- name: test the new asb_state lookup plugin
+  set_fact:
+    some_test_dict: "{{lookup('asb_state', 'some-key','some-other-key') }}"
+
+- debug: msg="the value of foo.txt is {{some_test_dict}}"
