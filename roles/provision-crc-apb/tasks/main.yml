@@ -3,20 +3,20 @@
 - name: Setting ASB State
   asb_set_state:
     fields:
-      some-key : "some_val"
-      another-key: "some_value"
+      some_key : "some_val"
+      another_key: "some_value"
 
 - name: Setting ASB State Again
   asb_set_state:
     fields:
-      test-patch: True
-      test-str-conv: "key test patch should be updated to 'True'"
+      test_patch: True
+      test_str_conv: "key test patch should be updated to 'True'"
 
 - name: Testing changed status should report ok
   asb_set_state:
     fields:
-      some-key : "some_val"
-      another-key: "some_value"
+      some_key : "some_val"
+      another_key: "some_value"
 
 - asb_encode_binding:
     fields:

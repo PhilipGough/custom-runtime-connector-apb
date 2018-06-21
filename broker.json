@@ -2,15 +2,15 @@
     "apiVersion": "servicecatalog.k8s.io/v1beta1",
     "kind": "ClusterServiceBroker",
     "metadata": {
-        "creationTimestamp": "2018-06-19T15:59:18Z",
+        "creationTimestamp": "2018-06-21T11:38:14Z",
         "finalizers": [
             "kubernetes-incubator/service-catalog"
         ],
         "generation": 1,
         "name": "ansible-service-broker",
-        "resourceVersion": "392",
+        "resourceVersion": "2640",
         "selfLink": "/apis/servicecatalog.k8s.io/v1beta1/clusterservicebrokers/ansible-service-broker",
-        "uid": "b8df8b06-73d9-11e8-a277-0242ac110004"
+        "uid": "9576754c-7547-11e8-a277-0242ac110004"
     },
     "spec": {
         "authInfo": {
@@ -30,14 +30,14 @@
     "status": {
         "conditions": [
             {
-                "lastTransitionTime": "2018-06-20T11:42:52Z",
+                "lastTransitionTime": "2018-06-21T11:38:15Z",
                 "message": "Successfully fetched catalog entries from broker.",
                 "reason": "FetchedCatalog",
                 "status": "True",
                 "type": "Ready"
             }
         ],
-        "lastCatalogRetrievalTime": "2018-06-20T13:21:28Z",
+        "lastCatalogRetrievalTime": "2018-06-21T11:38:15Z",
         "reconciledGeneration": 1
     }
 }

@@ -3,10 +3,10 @@
   set_fact:
     all_state: "{{lookup('asb_state', get_all=True) }}"
 
-- debug: msg="the value of foo.txt is {{all_state.some-key}}"
+- debug: msg="the value of foo.txt is {{all_state.some_key}}"
 
 - name: test the new asb_state lookup plugin
   set_fact:
-    some_test_dict: "{{lookup('asb_state', 'some-key','some-other-key') }}"
+    some_test_dict: "{{lookup('asb_state', 'some-key','some_other_key') }}"
 
 - debug: msg="the value of foo.txt is {{some_test_dict}}"

@@ -80,6 +80,8 @@ class LookupModule(LookupBase):
             state_dict = {}
             keys = os.listdir(base_state_path)
             for key in keys:
+                if os.path.isdir(os.path.join(base_state_path, key)):
+                    continue
                 conf_file = '{}/{}'.format(base_state_path, key)
                 state_dict[key] = self.get_state(key, conf_file)
             ret.append(state_dict)
@@ -98,3 +100,4 @@ class LookupModule(LookupBase):
         except AnsibleParserError:
             raise AnsibleError('error reading state for key {}'.format(key))
         return b_contents.decode("utf-8").rstrip()
+

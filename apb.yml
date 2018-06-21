@@ -19,7 +19,7 @@ metadata:
   serviceName: custom-runtime-connector
 plans:
   - name: default
-    description: This default plan deploys nothing
+    description: This default plan tests apb state
     free: True
     metadata:
       mobileclient_bind_parameters_data:

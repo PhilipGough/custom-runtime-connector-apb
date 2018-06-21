@@ -1,14 +1,13 @@
 ---
 
-- name: Get all state
-  set_fact:
-    all_state: "{{lookup('asb_state', get_all=True) }}"
+- name: Get all state and peek at key
+  debug:
+    msg: "The value for previously set state example=true is {{ lookup('asb_state', get_all=True).some_key }}"
 
-- debug: msg="the value of foo.txt is {{all_state.some-key}}"
 
 - name: test the new asb_state lookup plugin
   set_fact:
-    some_test_var: "{{lookup('asb_state', 'some-key') }}"
+    some_test_var: "{{lookup('asb_state', 'some_key') }}"
 
 - debug: msg="the value of foo.txt is {{some_test_var}}"
 
