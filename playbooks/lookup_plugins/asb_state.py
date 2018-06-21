@@ -28,7 +28,7 @@ options:
 notes: >
   _terms as a list of keys and get_all are mutually exclusive.
   If key(s) are provided, they will take priority and
-  their values willbe returned as a list.
+  their values will be returned as a list.
 '''
 
 EXAMPLES = '''
@@ -41,13 +41,13 @@ EXAMPLES = '''
 # Example for fetching a single key
 - name: Get state for single key
   debug:
-    msg: "The value for key example is {{lookup('asb_state', 'example') }}"
+    msg: "The value for key example is {{ lookup('asb_state', 'example') }}"
 
 
 # Example get state for multiple keys
 - name: test the new asb_state lookup plugin
   set_fact:
-    some_test_var: "{{lookup('asb_state', 'example-key', 'example-key-two') }}"
+    some_test_var: "{{ lookup('asb_state', 'example-key', 'example-key-two') }}"
 
 
 # Example to fetch state in loop
@@ -81,21 +81,20 @@ class LookupModule(LookupBase):
             keys = os.listdir(base_state_path)
             for key in keys:
                 conf_file = '{}/{}'.format(base_state_path, key)
-                state_dict[key] = self.get_state(conf_file)
+                state_dict[key] = self.get_state(key, conf_file)
             ret.append(state_dict)
             return ret
 
         for term in terms:
             conf_file = '{}/{}'.format(base_state_path, term)
-            ret.append(self.get_state(conf_file))
+            ret.append(self.get_state(term, conf_file))
         return ret
 
-    def get_state(self, conf_file):
+    def get_state(self, key, conf_file):
         try:
             b_contents, show_data = self._loader._get_file_contents(conf_file)
         except AnsibleFileNotFound:
-            raise AnsibleError('no state found for key {}'.format(term))
+            raise AnsibleError('no state found for key {}'.format(key))
         except AnsibleParserError:
-            raise AnsibleError('error reading state for key {}'.format(term))
+            raise AnsibleError('error reading state for key {}'.format(key))
         return b_contents.decode("utf-8").rstrip()
-
