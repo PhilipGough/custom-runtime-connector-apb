@@ -40,8 +40,9 @@ options:
 EXAMPLES = '''
 - name: Set some example state
   asb_set_state:
-    key: "example-key"
-    value: "some-value"
+    fields:
+      key-one: "example-value-one"
+      key-two: "example-value-two"
 '''
 
 import os
@@ -58,6 +59,16 @@ except ImportError as error:
 ENV_NAME = 'POD_NAME'
 ENV_NAMESPACE = 'POD_NAMESPACE'
 
+def should_update(existing, new):
+    if len(existing) < len(new):
+        return True
+    for key, value in new.items():
+        if not existing.has_key(key):
+            return True
+        if value != existing[key]:
+            return True
+    return False
+
 
 def run(module):
     try:
@@ -69,20 +80,34 @@ def run(module):
 
     config.load_kube_config()
     api = client.CoreV1Api()
-    data = {module.params['key']: module.params['value']}
+    unparsed_data = module.params['fields']
+    data = dict()
+
+    for key, value in unparsed_data.items():
+        if type(value) == str:
+            data[key] = value
+        else:
+            try:
+                str_val = str(value)
+                data[key] = str_val
+            except ValueError:
+                module.fail_json(
+                    msg='Error converting {} to string value'.format(value))
 
     try:
-        api.read_namespaced_config_map(name, namespace)
+        cm = api.read_namespaced_config_map(name, namespace)
     except ApiException as e:
         if e.status == 404:
-            create_config_map(name, namespace, data)
+            create_config_map(api, name, namespace, data)
             module.exit_json(changed=True)
         else:
             module.fail_json(
                 msg='Error attempting to read existing saved state: {}'.format(e))
+    if should_update(cm.data, data):
+        update_config_map(api, name, namespace, data)
+        module.exit_json(changed=True)
+    module.exit_json(changed=False)
 
-    update_config_map(name, namespace, data)
-    module.exit_json(changed=True)
 
 
 def create_config_map(api, name, namespace, data):
@@ -106,8 +131,8 @@ def update_config_map(api, name, namespace, data):
 
 def main():
     module = AnsibleModule(
-        argument_spec=dict(
-            key=dict(required=True, type='str'),
+        argument_spec = dict(
+            fields=dict(required=True, type='dict')
         ),
     )
     if not HAS_K8_CLIENT:

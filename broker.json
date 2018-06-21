@@ -1,0 +1,43 @@
+{
+    "apiVersion": "servicecatalog.k8s.io/v1beta1",
+    "kind": "ClusterServiceBroker",
+    "metadata": {
+        "creationTimestamp": "2018-06-19T15:59:18Z",
+        "finalizers": [
+            "kubernetes-incubator/service-catalog"
+        ],
+        "generation": 1,
+        "name": "ansible-service-broker",
+        "resourceVersion": "392",
+        "selfLink": "/apis/servicecatalog.k8s.io/v1beta1/clusterservicebrokers/ansible-service-broker",
+        "uid": "b8df8b06-73d9-11e8-a277-0242ac110004"
+    },
+    "spec": {
+        "authInfo": {
+            "bearer": {
+                "secretRef": {
+                    "name": "automation-broker-client-token-g4jgh",
+                    "namespace": "automation-broker"
+                }
+            }
+        },
+        "caBundle": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM2akNDQWRLZ0F3SUJBZ0lCQVRBTkJna3Foa2lHOXcwQkFRc0ZBREFtTVNRd0lnWURWUVFEREJ0dmNHVnUKYzJocFpuUXRjMmxuYm1WeVFERTFNamswTWpJM05UWXdIaGNOTVRnd05qRTVNVFV6T1RFMVdoY05Nak13TmpFNApNVFV6T1RFMldqQW1NU1F3SWdZRFZRUUREQnR2Y0dWdWMyaHBablF0YzJsbmJtVnlRREUxTWprME1qSTNOVFl3CmdnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUURQVmRxZHdZZHZtRisrY0tzZW9UYTYKZzVORmhiVVVwMTBjR0x3S2V6MnBQREZWL1BDNmdrM0hxMU54RVBDeHI1MWJyd1RwOWIzT1BSV2lFU3BuNGYyTAp0Yk5HSkZkS3pLcjVqQVpYbFhRTk9pQ2xrL0hVSklnMldTZmptSGgzaS8wTUdHUjF0aUpFWi9MYmVhTHcwTFg0Cm5rNkZaVWNaRVlIMzFDeHo3SzVaNEppd1I4ZC9tZ2RJZDF3VXZIbE5icFYzY081YzhoR0JqQmVUR25tSlB3TWgKZCs4VHFxLzFna0wxaXJwTnpHSlYzUG5kdDJQV2VudGVaZDVjYUlTS0dJcmMwbHMxK25acU5EZmtSWitDT2x2awpzbndWSmszY3RiTUtJQ1JudEYzNi82TzBEZThnWnBLZW16WmRidDRzN1VCYXBnUWVTNjRMa0JnUGdRSGl0TmN6CkFnTUJBQUdqSXpBaE1BNEdBMVVkRHdFQi93UUVBd0lDcERBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwR0NTcUcKU0liM0RRRUJDd1VBQTRJQkFRQkxpUnRFVFJSeUlxSCtmV3hGYzJvVXNCbnAxeGNVWWMxaW1pWUZVd05iWUZ3cQpoZ0NyNTFQeU5YT0VhSXNiSjJKK1NWRXZYaFJEUk5QbVY4L0lXSXZTSzVHWno4ODZSUno3enBBOUhFcUZ5bGh0CkFwSXlhVE43OHNvR29TekljejZYM2EzdnQ3TmlEQlp6eVBaSERxcjZXUHcvNldZbHZyREI3MS9Ddmh5c01DcC8KaFBKWDd3QWMwcjlwN1NmZUx1VGVtbU9lNHI2SFRaYVdXeXdza3drV1U0K0l2OHhtUzk4Z0tSRmx1Z200VE01eApCTDJQUkp0WXljMUlwWGZvUEhBRWlBcnlEQzk5UC9tbVI4NCtPMlBGRkJlaEM5aVNrQkgyekIzdEVSTHNlNGR5CmUyd2p6dzlYV2Rja0p5clBpR0V5QnN1N2xsU1Y0NXZBelh3QjVPdnAKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQoKLS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURDakNDQWZLZ0F3SUJBZ0lCQVRBTkJna3Foa2lHOXcwQkFRc0ZBREEyTVRRd01nWURWUVFEREN0dmNHVnUKYzJocFpuUXRjMlZ5ZG1salpTMXpaWEoyYVc1bkxYTnBaMjVsY2tBeE5USTVOREl5TnpVMk1CNFhEVEU0TURZeApPVEUxTXpreE5Wb1hEVEl6TURZeE9ERTFNemt4Tmxvd05qRTBNRElHQTFVRUF3d3JiM0JsYm5Ob2FXWjBMWE5sCmNuWnBZMlV0YzJWeWRtbHVaeTF6YVdkdVpYSkFNVFV5T1RReU1qYzFOakNDQVNJd0RRWUpLb1pJaHZjTkFRRUIKQlFBRGdnRVBBRENDQVFvQ2dnRUJBS2lXUWxIRkc3MDhQWUFTU2wydmFGN21ucVNQeTduK2YrZmdvb3Faak4wUQpPNE5seXhRV3pRdWVOVjlhaHFIMEFPYmlTeU9PckFGeEJ2M0NwK29Uc3dVT3ROWkJQM0FaZ2NKRkZXMkdoSS80ClBSenVudjhiejMzMDQyQVoyTDVKRmdGQ2hPMklBTnBoVjBtbWZqS2RXMEJMaXdKODc1NVZzRTduTW9LRjkvSkwKaURZUDRGYVVFTlVUcElBbllVdkM3c1JvSjlPQTdINGRlZTIxaWo4SGJ4aWxjanZZaDZGYzdRSEhaa0YzaElxTApGV1FDdkZ4ZVZyN01ZMWRTaTBQNXdienBMWDJxYmNucWl1d3Y1SHI2NWR1YnZxenVkVWgyYVNDUjJjd29CYy83Ck1rdlpvUG1pZ3l4WXo2TVdNSnhUdGowcGw3S2VGdFdrNGVoeFY0aG96MnNDQXdFQUFhTWpNQ0V3RGdZRFZSMFAKQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUZHdgpiWSsxNEhLMWFiL3EyOXdyak11anB0Mm1xdkF5RjE0TDFHVlNRa3VldzZ6dHFHbVZDVWpOZUNsOU5rNWV0N3ZhCkg3RUs2aDhHSnY4VEt6VFhBWFVWaDM5czg1azdrTmRXc1FRbXVrdjFyQWtHem0wd21raW8zdy9HOGtKcjc0VXAKOVpIQ1RyOHA5dlpsRloxV1ZpZVlMZXhKRjB5bmU4dFdoT2ljY0R2K0tyZHE5bHVtTnB0MzZBWVAxTm1OZGIyNAppK0JmVUtHOFBLV01OU1dhNHZzRHE5b1FHOE1EYjVDYm5XR1FVUWdHNmphSnNyWVM2YmhDYmI3ZTlYRUUrZUZoCmpUUzdzNmlPMlFXMFlKVG5IUUZSWEsxNXhiOExjNnZLcGt1WkZoT204cEdha0dRMkErSFFLSjJYVXN6eTNwWFAKWWFWRi9raEZGTVdqSHNRZzEyST0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=",
+        "relistBehavior": "Duration",
+        "relistDuration": "15m0s",
+        "relistRequests": 0,
+        "url": "https://automation-broker.automation-broker.svc:1338/automation-broker/"
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastTransitionTime": "2018-06-20T11:42:52Z",
+                "message": "Successfully fetched catalog entries from broker.",
+                "reason": "FetchedCatalog",
+                "status": "True",
+                "type": "Ready"
+            }
+        ],
+        "lastCatalogRetrievalTime": "2018-06-20T13:21:28Z",
+        "reconciledGeneration": 1
+    }
+}
