@@ -7,6 +7,6 @@
 
 - name: test the new asb_state lookup plugin
   set_fact:
-    some_test_dict: "{{lookup('asb_state', 'some-key','some_other_key') }}"
+    some_test_dict: "{{lookup('asb_state', 'some_key','some_other_key') }}"
 
 - debug: msg="the value of foo.txt is {{some_test_dict}}"
